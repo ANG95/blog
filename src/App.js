@@ -29,7 +29,7 @@ function App() {
 
             <div style={{ textAlign: "justify",color: "#40fffc" }}>
               <p>
-                Soy Programador Web Fulltack y Diseñador Gráfico aficionado, estudié la carrera de Ingeniería de Sistemas y me especialicé en aquello que me apasionó, la programación.
+                Soy Programador Web Fulltack y Diseñador Gráfico aficionado, estudié la carrera de Ingeniería de Sistemas y me especialicé en aquello que realmente me apasionó, la programación.
                 En los últimos 3 años he desarrollado aplicaciones para escritorio y app moviles con javascript y reactjs asi tambien sitios web que generan valor y aumenta el desempeño de las empresas.
               </p>
               <p>
