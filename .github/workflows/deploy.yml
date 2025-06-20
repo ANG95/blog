@@ -23,6 +23,9 @@ jobs:
           node-version: '20'
           cache: 'yarn'
 
+      - name: Force node-modules linker (for Yarn Berry)
+        run: yarn config set nodeLinker node-modules
+
       - name: Install dependencies
         run: yarn install
 
