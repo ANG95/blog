@@ -1,37 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------------------- Custom Styles -------------------- */
 body {
-    background: #485563;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #29323c, #485563);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #29323c, #485563);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
-  }
-.portada{
+  background: #485563; /* fallback */
+  background: -webkit-linear-gradient(to right, #29323c, #485563);
+  background: linear-gradient(to right, #29323c, #485563);
+}
+
+.portada {
   background-image: url("./assets/img/imgProgramacion.jpg");
-  background-color: #cccccc;
-  height: calc(100vh);
+  background-color: #cccccc; /* fallback */
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.botones{
+
+.botones {
   background: #0b486a;
-  border: #63edfb;
+  border: 1px solid #63edfb;
   font-size: 1.5em;
   color: white;
-  margin-bottom: auto;
-  box-shadow: 0px 0px 3px 2px #13ddda;
+  box-shadow: 0 0 3px 2px #13ddda;
   border-radius: 0.5em;
   padding: 0.5rem;
 }
-.botones:hover{
+
+.botones:hover {
   background: #0f6999e8;
-  /* border: #63edfb;
-  font-size: 1.5em;
-  color: white;
-  margin-bottom: auto;
-  box-shadow: 0px 0px 3px 2px #13ddda;
-  border-radius: 1em;
-  padding: 0.5rem; */
 }
