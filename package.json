@@ -2,7 +2,7 @@
   "name": "myportafolio",
   "version": "0.3.0",
   "private": true,
-  "homepage": "https://ang95.github.io/ANG95",
+  "homepage": "https://ang95.github.io",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
