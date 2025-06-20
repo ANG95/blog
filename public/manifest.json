@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Germán Apaza",
+  "name": "Germán Apaza - React Native & ReactJS Developer",
+  "description": "Desarrollador móvil y web especializado en React Native, ReactJS y Android.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,16 +11,44 @@
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "144x144",
+      "purpose": "monochrome"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#2D3748",
+  "background_color": "#F7FAFC",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "es-ES",
+  "categories": ["development", "mobile", "web"],
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "description": "Aplicación móvil desarrollada con React Native"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.germanapaza.app",
+      "id": "com.germanapaza.app"
+    }
+  ],
+  "prefer_related_applications": true
 }
