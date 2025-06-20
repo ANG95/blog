@@ -2,6 +2,16 @@
   "name": "myportafolio",
   "version": "0.3.0",
   "private": true,
+  "homepage": "https://ang95.github.io/ANG95",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "type-check": "tsc --noEmit",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
+  },
   "dependencies": {
     "classnames": "^2.5.1",
     "framer-motion": "^12.18.1",
@@ -10,15 +20,13 @@
     "react-dom": "^18.3.0",
     "react-scripts": "5.0.1"
   },
-  "homepage": "https://github.com/ANG95",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "type-check": "tsc --noEmit",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.4.5"
   },
   "eslintConfig": {
     "extends": [
@@ -38,12 +46,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@types/react": "^18.3.0",
-    "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.4",
-    "typescript": "^5.4.5"
-  }
+  "packageManager": "yarn@4.5.3+sha512.3003a14012e2987072d244c720506549c1aab73ee728208f1b2580a9fd67b92d61ba6b08fe93f6dce68fd771e3af1e59a0afa28dd242dd0940d73b95fedd4e90"
 }
