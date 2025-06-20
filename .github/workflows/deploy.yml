@@ -23,6 +23,12 @@ jobs:
           node-version: '20'
           cache: 'yarn'
 
+      - name: Enable Corepack (for Yarn 4+)
+        run: corepack enable
+
+      - name: Use Yarn v4.5.3 (lock to your project's version)
+        run: corepack prepare yarn@4.5.3 --activate
+
       - name: Force node-modules linker (for Yarn Berry)
         run: yarn config set nodeLinker node-modules
 
