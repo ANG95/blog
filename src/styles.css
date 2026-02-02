@@ -2,16 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-/* -------------------- Custom Styles -------------------- */
-body {
-  background: #485563; /* fallback */
-  background: -webkit-linear-gradient(to right, #29323c, #485563);
-  background: linear-gradient(to right, #29323c, #485563);
+@layer base {
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 184, 0, 0.5) #060a12;
+  }
+  html::-webkit-scrollbar {
+    width: 10px;
+  }
+  html::-webkit-scrollbar-track {
+    background: #060a12;
+  }
+  html::-webkit-scrollbar-thumb {
+    background: rgba(255, 184, 0, 0.4);
+    border-radius: 0;
+  }
+  html::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 184, 0, 0.65);
+  }
+  body {
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
+    -webkit-overflow-scrolling: touch;
+    background: #060a12;
+  }
+}
+
+
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+.aside-scroll::-webkit-scrollbar,
+.main-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.aside-scroll::-webkit-scrollbar-track,
+.main-scroll::-webkit-scrollbar-track {
+  background: #0a0e1a;
+  border-left: 1px solid rgba(255, 184, 0, 0.15);
+}
+
+.aside-scroll::-webkit-scrollbar-thumb,
+.main-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 184, 0, 0.35);
+  border-radius: 0;
+}
+
+.aside-scroll::-webkit-scrollbar-thumb:hover,
+.main-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 184, 0, 0.6);
+}
+
+.aside-scroll::-webkit-scrollbar-corner,
+.main-scroll::-webkit-scrollbar-corner {
+  background: #0a0e1a;
+}
+
+.aside-scroll,
+.main-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 184, 0, 0.5) #0a0e1a;
 }
 
 .portada {
   background-image: url("./assets/img/imgProgramacion.jpg");
-  background-color: #cccccc; /* fallback */
+  background-color: #060a12;
   height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -19,15 +80,15 @@ body {
 }
 
 .botones {
-  background: #0b486a;
-  border: 1px solid #63edfb;
+  background: #0a0e1a;
+  border: 1px solid rgba(255, 184, 0, 0.5);
   font-size: 1.5em;
-  color: white;
-  box-shadow: 0 0 3px 2px #13ddda;
-  border-radius: 0.5em;
+  color: #FFB800;
+  border-radius: 0;
   padding: 0.5rem;
 }
 
 .botones:hover {
-  background: #0f6999e8;
+  background: rgba(255, 184, 0, 0.1);
+  box-shadow: 0 0 20px rgba(255, 184, 0, 0.2);
 }
