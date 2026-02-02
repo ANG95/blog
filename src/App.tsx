@@ -1,29 +1,60 @@
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Phone, Mail, Github, Link as LinkIcon, GraduationCap, Award } from "lucide-react";
-import { profile, contact, skills, experience, education } from "./data/portfolioData";
+import { profile, contact, skills } from "./data/portfolioData";
+import { useLanguage } from "./i18n/context";
 import OfflineIntercomLegalPage from "./OfflineIntercomLegalPage";
 
+const SEO_BY_LOCALE = {
+  es: {
+    title: "German Apaza | React Native Senior Developer",
+    description: "Portafolio profesional de German Apaza: Senior ReactJS, React Native, Android developer. Experiencia en bancos, telcos, fintech y más.",
+    ogTitle: "German Apaza | Senior React Developer",
+    ogDescription: "Portafolio profesional de German Apaza. Experto en desarrollo móvil y web.",
+  },
+  en: {
+    title: "German Apaza | React Native Senior Developer",
+    description: "German Apaza's professional portfolio: Senior ReactJS, React Native, Android developer. Experience in banks, telcos, fintech and more.",
+    ogTitle: "German Apaza | Senior React Developer",
+    ogDescription: "German Apaza's portfolio. Expert in mobile and web development.",
+  },
+};
+
 function MetaSEO() {
+  const { locale } = useLanguage();
+  const seo = SEO_BY_LOCALE[locale];
   useEffect(() => {
-    document.title = "German Apaza | React Native Senior Developer";
-    document
-      .querySelector("meta[name='description']")
-      ?.setAttribute(
-        "content",
-        "Portafolio profesional de German Apaza: Senior ReactJS, React Native, Android developer. Experiencia en bancos, telcos, fintech y más."
-      );
-    document
-      .querySelector("meta[property='og:title']")
-      ?.setAttribute("content", "German Apaza | Senior React Developer");
-    document
-      .querySelector("meta[property='og:description']")
-      ?.setAttribute(
-        "content",
-        "Portafolio profesional de German Apaza. Experto en desarrollo móvil y web."
-      );
-  }, []);
+    document.title = seo.title;
+    document.querySelector("meta[name='description']")?.setAttribute("content", seo.description);
+    document.querySelector("meta[property='og:title']")?.setAttribute("content", seo.ogTitle);
+    document.querySelector("meta[property='og:description']")?.setAttribute("content", seo.ogDescription);
+  }, [locale, seo]);
   return null;
+}
+
+function LanguageSwitcher() {
+  const { locale, setLocale } = useLanguage();
+  return (
+    <div className="flex items-center gap-1 border border-gold/30 px-2 py-1 mb-6">
+      <button
+        type="button"
+        onClick={() => setLocale("es")}
+        className={`text-xs font-semibold tracking-wider uppercase transition-colors ${locale === "es" ? "text-gold" : "text-slate-500 hover:text-slate-300"}`}
+        aria-pressed={locale === "es"}
+      >
+        ES
+      </button>
+      <span className="text-slate-600">|</span>
+      <button
+        type="button"
+        onClick={() => setLocale("en")}
+        className={`text-xs font-semibold tracking-wider uppercase transition-colors ${locale === "en" ? "text-gold" : "text-slate-500 hover:text-slate-300"}`}
+        aria-pressed={locale === "en"}
+      >
+        EN
+      </button>
+    </div>
+  );
 }
 
 const glowStyles = `
@@ -57,6 +88,7 @@ const CursorGlow = () => {
 const LEGAL_HASH = "#offline-intercom-privacy";
 
 export default function App() {
+  const { t } = useLanguage();
   const [showLegal, setShowLegal] = useState(
     () => typeof window !== "undefined" && window.location.hash === LEGAL_HASH
   );
@@ -75,22 +107,22 @@ export default function App() {
         <CursorGlow />
         {showLegal ? (
           <div className="relative z-10 pt-10 pb-6">
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
+            <button
+              type="button"
+              onClick={() => {
                 window.location.hash = "";
                 setShowLegal(false);
               }}
-              className="inline-block mb-6 mx-4 text-gold hover:text-gold/90 text-sm font-medium tracking-widest uppercase"
+              className="inline-block mb-6 mx-4 text-gold hover:text-gold/90 text-sm font-medium tracking-widest uppercase text-left bg-transparent border-0 cursor-pointer"
             >
-              ← Volver al portafolio
-            </a>
+              {t.ui.backToPortfolio}
+            </button>
             <OfflineIntercomLegalPage />
           </div>
         ) : (
           <div className="flex flex-col md:flex-row max-w-6xl mx-auto min-h-screen md:h-screen">
             <aside className="aside-scroll md:w-72 w-full shrink-0 bg-hud-950/90 md:bg-hud-900/80 border-b md:border-b-0 md:border-r border-gold/20 px-6 py-8 flex flex-col items-center md:items-start md:sticky md:top-0 md:self-start h-fit md:max-h-screen md:overflow-y-auto z-20 shadow-gold-sm">
+              <LanguageSwitcher />
               <motion.div
                 className="relative mb-6"
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -108,11 +140,11 @@ export default function App() {
                 {profile.name}
               </h1>
               <p className="text-sm text-arc font-mono tracking-widest mb-4">
-                {profile.title}
+                {t.profile.title}
               </p>
               <div className="w-12 h-px bg-gradient-to-r from-gold/60 to-transparent mb-5" />
               <p className="text-sm text-slate-300 leading-relaxed mb-6 text-center md:text-left">
-                {profile.summary}
+                {t.profile.summary}
               </p>
               <div className="flex flex-col gap-3 text-sm w-full mb-6">
                 <a href={`tel:${contact.whatsapp}`} className="flex items-center gap-2 text-slate-200 hover:text-gold transition-colors font-medium">
@@ -131,7 +163,7 @@ export default function App() {
               <div className="w-full mb-6">
                 <h2 className="font-display text-xs font-semibold text-gold uppercase tracking-[0.35em] mb-3 flex items-center gap-2">
                   <Award size={12} className="text-gold" />
-                  Habilidades
+                  {t.ui.skills}
                 </h2>
                 <ul className="flex flex-wrap gap-2">
                   {skills.map((s) => (
@@ -147,10 +179,10 @@ export default function App() {
               <div className="w-full">
                 <h2 className="font-display text-xs font-semibold text-gold uppercase tracking-[0.35em] mb-3 flex items-center gap-2">
                   <GraduationCap size={12} className="text-gold" />
-                  Educación
+                  {t.ui.education}
                 </h2>
                 <ul className="flex flex-col gap-3">
-                  {education.map((e) => (
+                  {t.education.map((e) => (
                     <li key={e.title} className="border-l-2 border-gold/40 pl-3 py-1">
                       <div className="text-sm font-semibold text-slate-100">{e.title}</div>
                       <div className="text-xs text-slate-300">{e.institution}</div>
@@ -164,7 +196,7 @@ export default function App() {
             <main className="main-scroll flex-1 min-h-0 w-full px-4 py-8 md:px-10 md:py-12 md:overflow-y-auto md:max-h-screen relative z-10">
               <section>
                 <h2 className="font-display text-xs font-semibold text-gold uppercase tracking-[0.4em] mb-8 md:mb-10">
-                  Experiencia
+                  {t.ui.experience}
                 </h2>
                 <div className="relative">
                   <div
@@ -172,7 +204,7 @@ export default function App() {
                     aria-hidden
                   />
                   <div className="space-y-6 md:space-y-8">
-                    {experience.map((exp, idx) => (
+                    {t.experience.map((exp, idx) => (
                       <motion.div
                         key={`${exp.company}-${idx}`}
                         className="relative pl-6 md:pl-8"
@@ -244,7 +276,7 @@ export default function App() {
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 text-xs text-gold hover:text-gold/90 mt-4 font-semibold tracking-widest uppercase transition-colors"
                           >
-                            Visitar
+                            {t.ui.visit}
                             <LinkIcon size={12} />
                           </a>
                         </div>
@@ -257,12 +289,12 @@ export default function App() {
           </div>
         )}
         <footer className="relative z-10 text-center text-xs text-slate-400 py-6 font-medium tracking-widest uppercase space-y-2">
-          <div>© {new Date().getFullYear()} German Apaza</div>
+          <div>© {new Date().getFullYear()} {t.ui.copyright}</div>
           <a
             href={LEGAL_HASH}
             className="text-gold hover:text-gold/90 transition-colors"
           >
-            Política de privacidad – Offline Intercom
+            {t.ui.privacyPolicy}
           </a>
         </footer>
       </div>
