@@ -291,6 +291,12 @@ export default function App() {
         <footer className="relative z-10 text-center text-xs text-slate-400 py-6 font-medium tracking-widest uppercase space-y-2">
           <div>© {new Date().getFullYear()} {t.ui.copyright}</div>
           <a
+            href="geofoto-privacidad.html"
+            className="text-gold hover:text-gold/90 transition-colors"
+          >
+            {t.ui.privacyPolicyGeoFoto}
+          </a>
+          <a
             href={LEGAL_HASH}
             className="text-gold hover:text-gold/90 transition-colors"
           >

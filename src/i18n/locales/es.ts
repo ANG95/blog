@@ -8,6 +8,7 @@ export const es: Translations = {
     experience: "Experiencia",
     visit: "Visitar",
     privacyPolicy: "Política de privacidad – Offline Intercom",
+    privacyPolicyGeoFoto: "Política de privacidad – GeoFoto",
     copyright: "German Apaza",
   },
   profile: {

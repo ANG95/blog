@@ -30,6 +30,7 @@ export interface Translations {
     experience: string;
     visit: string;
     privacyPolicy: string;
+    privacyPolicyGeoFoto: string;
     copyright: string;
   };
   profile: {
